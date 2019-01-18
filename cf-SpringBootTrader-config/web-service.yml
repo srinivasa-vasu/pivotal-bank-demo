@@ -1,10 +1,10 @@
 spring:
   application:
      name: web-service
-eureka:
-  client:
-    registerWithEureka: true
-    registryFetchIntervalSeconds: 10
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    registryFetchIntervalSeconds: 10
 pivotal:
   summary:
     quotes: 3
