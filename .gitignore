@@ -18,3 +18,8 @@ gradle-app.setting
 .gradletasknamecache
 
 *.log
+
+*.classpath
+.project
+bin/
+*.settings
