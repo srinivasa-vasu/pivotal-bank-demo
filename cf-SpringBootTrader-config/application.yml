@@ -1,14 +1,14 @@
 pivotal:
   quotesService:
-    name: gateway-service
+    name: quotes-service
   userService:
-    name: gateway-service
+    name: user-service
   accountsService:
-    name: gateway-service
+    name: accounts-service
   portfolioService:
-    name: gateway-service
+    name: portfolio-service
   analyticsService:
-    name: gateway-service
+    name: analytics-service
 logging:
   level:
      io:
