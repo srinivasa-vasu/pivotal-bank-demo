@@ -7,7 +7,7 @@ spring:
 #    registryFetchIntervalSeconds: 10
 pivotal:
   summary:
-    quotes: 3
+    quotes: 2
     symbols:
       it: ORCL,IBM,INTC,AMD,HPQ,CSCO,AAPL
       fs: JPM,C,MS,BAC,GS,WFC,BK
