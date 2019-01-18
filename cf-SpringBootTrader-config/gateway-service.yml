@@ -11,10 +11,10 @@ spring:
         - Path=/quotes/**
         filters:
         - RewritePath=/quotes/(?<path>.*), /$\{path}
-      - id: quotes-service-curl
+      - id: quotes-service
         uri: lb://quotes-service
         predicates:
-          - Path=/v1/**
+        - Path=/v1/**
       - id: accounts-service
         uri: lb://accounts-service
         predicates:
@@ -30,11 +30,11 @@ spring:
       - id: user-service-login
         uri: lb://user-service
         predicates:
-          - Path=/login/**
+        - Path=/login/**
       - id: user-service-logout
         uri: lb://user-service
         predicates:
-          - Path=/logout/**
+        - Path=/logout/**
       - id: portfolio-service
         uri: lb://portfolio-service
         predicates:
