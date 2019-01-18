@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -31,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/", "/registration","/hystrix.stream").permitAll()
-				.antMatchers(HttpMethod.POST, "/actuator/refresh").permitAll()
 				.requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -49,7 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/webjars/**")
-                .antMatchers("/images/**").antMatchers("/css/**").antMatchers("/js/**");
+				.antMatchers(HttpMethod.POST, "/actuator/refresh")
+				.antMatchers("/images/**").antMatchers("/css/**").antMatchers("/js/**");
     }
 	
 	@Autowired
