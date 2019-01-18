@@ -5,12 +5,16 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: quotes-service
+      - id: quotes-service-curl
         uri: lb://quotes-service
         predicates:
         - Path=/quotes/**
         filters:
         - RewritePath=/quotes/(?<path>.*), /$\{path}
+      - id: quotes-service-curl
+        uri: lb://quotes-service
+        predicates:
+          - Path=/v1/**
       - id: accounts-service
         uri: lb://accounts-service
         predicates:
@@ -20,9 +24,17 @@ spring:
       - id: user-service
         uri: lb://user-service
         predicates:
-        - Path=/user/**
+        - Path=/users/**
         #filters:
         #- RewritePath=/user/(?<path>.*), /$\{path}
+      - id: user-service-login
+        uri: lb://user-service
+        predicates:
+          - Path=/login/**
+      - id: user-service-logout
+        uri: lb://user-service
+        predicates:
+          - Path=/logout/**
       - id: portfolio-service
         uri: lb://portfolio-service
         predicates:
