@@ -10,7 +10,7 @@ build()
 {
   echo_msg "Building $1"
   cd $BASE_DIR/$1
-  ./gradlew build ; sleep 4
+  gradle build ; sleep 4
 }
 
 main()

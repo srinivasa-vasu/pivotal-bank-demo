@@ -21,7 +21,7 @@ SCRIPTNAME=`basename "$0"`
 
 ./deleteListedApps.sh &
 wait
-./deleteListedServices.sh &
+#./deleteListedServices.sh &
 wait
 sh ./1_createServices.sh
 sh ./2_build.sh
