@@ -1,3 +1,16 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: build-cache
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
+---
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
@@ -15,10 +28,14 @@ spec:
             revision: pks_1.0
           subPath: quotes-service
         template:
-          name: jib-maven
+          name: jib-gradle
           arguments:
-            - name: IMAGE
-              value: humourmind/pivotal-bank/quotes-service
+          - name: IMAGE
+            value: humourmind/pivotal-bank/quotes-service
+        volumes:
+          - name: persistent-cache
+            persistentVolumeClaim:
+              claimName: build-cache
       revisionTemplate:
         metadata:
           annotations:

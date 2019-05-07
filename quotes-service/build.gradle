@@ -58,3 +58,7 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
+
+plugins {
+    id 'com.google.cloud.tools.jib' version '0.9.10'
+}
