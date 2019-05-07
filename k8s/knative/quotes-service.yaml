@@ -18,6 +18,10 @@ metadata:
   labels:
     app: quotes-service
 spec:
+  traffic:
+    - tag: quotes-service
+      percent: 100
+      latestRevision: true
   runLatest:
     configuration:
       build:
