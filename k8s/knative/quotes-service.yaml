@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: build-cache
+  name: quotes-service-build-cache
 spec:
   accessModes:
     - ReadWriteOnce
@@ -35,7 +35,7 @@ spec:
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
-              claimName: build-cache
+              claimName: quotes-service-build-cache
       revisionTemplate:
         metadata:
           annotations:
