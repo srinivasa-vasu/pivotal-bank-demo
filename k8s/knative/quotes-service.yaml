@@ -31,7 +31,7 @@ spec:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/pivotal-bank/quotes-service
+            value: humourmind/quotes-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
@@ -49,4 +49,4 @@ spec:
             labels:
               app: quotes-service
           container:
-            image: humourmind/pivotal-bank/quotes-service
+            image: humourmind/quotes-service
