@@ -1,0 +1,35 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: quotes-service
+  labels:
+    app: quotes-service
+spec:
+  runLatest:
+    configuration:
+      build:
+        serviceAccountName: build-bot
+        source:
+          git:
+            url: https://github.com/srinivasa-vasu/pivotal-bank-demo.git
+            revision: pks_1.0
+          subPath: quotes-service
+        template:
+          name: jib-maven
+          arguments:
+            - name: IMAGE
+              value: humourmind/pivotal-bank/quotes-service
+      revisionTemplate:
+        metadata:
+          annotations:
+            # this prevents from scale to zero
+            autoscaling.knative.dev/minScale: "1"
+          labels:
+            knative.dev/type: quotes-service
+            app: quotes-service
+        spec:
+          metadata:
+            labels:
+              app: quotes-service
+          container:
+            image: humourmind/pivotal-bank/quotes-service
