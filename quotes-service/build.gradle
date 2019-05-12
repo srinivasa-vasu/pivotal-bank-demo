@@ -46,9 +46,12 @@ dependencies {
 
     compileOnly "org.projectlombok:lombok"
 
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
+    compile "org.springframework.cloud:spring-cloud-config-client"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
+    compile "org.springframework.boot:spring-boot-starter-security"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
 //    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker"
     compile "io.micrometer:micrometer-registry-prometheus"
 
 
@@ -58,7 +61,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+//        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
