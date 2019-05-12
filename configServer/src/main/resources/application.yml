@@ -3,8 +3,8 @@ info:
 spring:
   application:
     name: configserver
-  profiles:
-    active: native
+#  profiles:
+#    active: native
   jmx:
     default_domain: cloud.config.server
   cloud:
@@ -18,7 +18,7 @@ spring:
         git:
           uri: https://github.com/srinivasa-vasu/pivotal-bank-demo.git
           searchPaths: cf-SpringBootTrader-config
-          default-label: pks_1.0
+#          default-label: pks_1.0
 management:
   context_path: /admin
 #server:
