@@ -47,6 +47,7 @@ spec:
             autoscaling.knative.dev/minScale: "1"
           labels:
             app: quotes
+            knative.dev/type: app
         spec:
           metadata:
             name: quotes
@@ -54,6 +55,11 @@ spec:
               app: quotes
           container:
             image: humourmind/quotes-service
+            env:
+            - name: SPRING_CLOUD_CONFIG_LABEL
+              value: pks_1.0
+            - name: SPRING_PROFILES_ACTIVE
+              value: default
   traffic:
     - tag: quotes
       percent: 100
