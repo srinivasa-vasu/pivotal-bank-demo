@@ -4,4 +4,4 @@ spring:
   cloud:
     config:
       uri: http://config-service
-      label: master
+      label: pks_1.0
