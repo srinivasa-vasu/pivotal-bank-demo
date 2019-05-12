@@ -3,5 +3,5 @@ spring:
      name: quotes-service
   cloud:
     config:
-      uri: http://config-service.bank-demo.svc.cluster.local
+      uri: http://config-service.bdemo.svc.cluster.local
       label: pks_1.0
