@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: web-ui-build-cache
+  name: web-build-cache
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,13 +14,13 @@ spec:
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: web-ui
+  name: web
   labels:
-    app: web-ui
+    app: web
 spec:
   template:
     metadata:
-      name: web-ui
+      name: web
   runLatest:
     configuration:
       build:
@@ -29,33 +29,33 @@ spec:
           git:
             url: https://github.com/srinivasa-vasu/pivotal-bank-demo.git
             revision: pks_1.0
-          subPath: web-ui
+          subPath: web
         template:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/web-ui-service
+            value: humourmind/web-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
-              claimName: web-ui-build-cache
+              claimName: web-build-cache
       revisionTemplate:
         metadata:
-          name: web-ui
+          name: web
           annotations:
             # this prevents from scale to zero
             autoscaling.knative.dev/minScale: "1"
           labels:
-            app: web-ui
+            app: web
             knative.dev/type: app
         spec:
           metadata:
-            name: web-ui
+            name: web
             labels:
-              app: web-ui
+              app: web
               version: v1
           container:
-            image: humourmind/web-ui-service
+            image: humourmind/web-service
             env:
             - name: SPRING_CLOUD_CONFIG_LABEL
               value: pks_1.0
@@ -64,7 +64,7 @@ spec:
 #            - name: SPRING_CLOUD_CONFIG_URI
 #              value: http://config-service
   traffic:
-    - tag: web-ui
+    - tag: web
       percent: 100
       latestRevision: true
 

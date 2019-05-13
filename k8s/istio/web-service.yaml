@@ -2,14 +2,14 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: web-ui-service
+  name: web-service
 spec:
   hosts:
-  - web-ui-service
+  - web-servicef
   http:
   - route:
     - destination:
-        host: web-ui-service
+        host: web-service
         subset: "v1"
       weight: 100
     retries:
@@ -19,9 +19,9 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: web-ui-service
+  name: web-service
 spec:
-  host: web-ui-service
+  host: web-service
   trafficPolicy:
     loadBalancer:
       simple: RANDOM
