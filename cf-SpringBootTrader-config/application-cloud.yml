@@ -4,4 +4,4 @@ spring:
     sender:
       type: web
 pivotal:
-  downstream-protocol: https
+  downstream-protocol: http
