@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: quotes-build-cache
+  name: accounts-build-cache
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,13 +14,13 @@ spec:
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: quotes
+  name: accounts
   labels:
-    app: quotes
+    app: accounts
 spec:
   template:
     metadata:
-      name: quotes
+      name: accounts
   runLatest:
     configuration:
       build:
@@ -29,40 +29,40 @@ spec:
           git:
             url: https://github.com/srinivasa-vasu/pivotal-bank-demo.git
             revision: pks_1.0
-          subPath: quotes-service
+          subPath: accounts-service
         template:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/quotes-service
+            value: humourmind/accounts-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
-              claimName: quotes-build-cache
+              claimName: accounts-build-cache
       revisionTemplate:
         metadata:
-          name: quotes
+          name: accounts
           annotations:
             # this prevents from scale to zero
             autoscaling.knative.dev/minScale: "1"
           labels:
-            app: quotes
+            app: accounts
             knative.dev/type: app
         spec:
           metadata:
-            name: quotes
+            name: accounts
             labels:
-              app: quotes
+              app: accounts
               version: v1
           container:
-            image: humourmind/quotes-service
+            image: humourmind/accounts-service
             env:
             - name: SPRING_CLOUD_CONFIG_LABEL
               value: pks_1.0
 #            - name: SPRING_CLOUD_CONFIG_URI
 #              value: http://config-service
   traffic:
-    - tag: quotes
+    - tag: accounts
       percent: 100
       latestRevision: true
 

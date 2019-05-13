@@ -44,9 +44,12 @@ dependencies {
 
     compile "org.springframework.cloud:spring-cloud-starter-zipkin"
 
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
-    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry"
+//    compile "io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker"
+
+    compile "org.springframework.cloud:spring-cloud-config-client"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
 
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "junit:junit"
