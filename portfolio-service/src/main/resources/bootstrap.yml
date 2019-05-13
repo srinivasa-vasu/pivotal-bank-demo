@@ -2,6 +2,9 @@ spring:
 #  profiles.active: local
   application:
      name: portfolio-service
+  cloud:
+    config:
+      uri: http://config-service
 info:
   build:
     group: ${group}
