@@ -59,6 +59,8 @@ spec:
             env:
             - name: SPRING_CLOUD_CONFIG_LABEL
               value: pks_1.0
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://traderdb:3306/traderdb?useUnicode=true&characterEncoding=utf8&useSSL=false
 #            - name: SPRING_CLOUD_CONFIG_URI
 #              value: http://config-service
   traffic:
