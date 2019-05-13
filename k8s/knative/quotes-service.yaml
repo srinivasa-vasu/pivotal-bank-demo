@@ -55,9 +55,9 @@ spec:
               app: quotes
           container:
             image: humourmind/quotes-service
-#            env:
-#            - name: SPRING_CLOUD_CONFIG_LABEL
-#              value: master
+            env:
+            - name: SPRING_CLOUD_CONFIG_LABEL
+              value: pks_1.0
 #            - name: SPRING_CLOUD_CONFIG_URI
 #              value: http://config-service
   traffic:

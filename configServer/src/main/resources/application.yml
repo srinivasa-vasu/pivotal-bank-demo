@@ -2,7 +2,7 @@ info:
   component: Config Server
 spring:
   application:
-    name: configserver
+    name: config-service
 #  profiles:
 #    active: native
   jmx:
