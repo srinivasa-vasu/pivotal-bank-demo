@@ -23,6 +23,8 @@ spec:
     metadata:
       labels:
         app: traderdb
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       volumes:
       - name: data
@@ -30,7 +32,7 @@ spec:
           claimName: traderdb-pvc
       containers:
       - name: mysql
-        image: mysql:5.7.20
+        image: mysql:8.0.16
         env:
         - name: MYSQL_USER
           value: root
