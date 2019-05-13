@@ -1,6 +1,9 @@
 spring:
   application:
-     name: web-service
+     name: web-ui-service
+  cloud:
+    config:
+      uri: http://config-service
 info:
   build:
     group: ${group}

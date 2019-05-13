@@ -1,6 +1,9 @@
 spring:
   application:
      name: accounts-service
+  cloud:
+    config:
+      uri: http://config-service
 info:
   build:
     group: ${group}
