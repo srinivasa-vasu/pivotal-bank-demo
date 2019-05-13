@@ -3,5 +3,4 @@ spring:
      name: quotes-service
   cloud:
     config:
-      uri: http://config-service.bdemo.svc.cluster.local
-      label: pks_1.0
+      uri: http://config-service
