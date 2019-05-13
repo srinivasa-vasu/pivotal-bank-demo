@@ -47,6 +47,7 @@ spec:
             autoscaling.knative.dev/minScale: "1"
           labels:
             app: config
+            version: v1
         spec:
           metadata:
             name: config

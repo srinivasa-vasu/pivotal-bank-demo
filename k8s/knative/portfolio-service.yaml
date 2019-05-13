@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: quotes-build-cache
+  name: portfolio-build-cache
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,13 +14,13 @@ spec:
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: quotes
+  name: portfolio
   labels:
-    app: quotes
+    app: portfolio
 spec:
   template:
     metadata:
-      name: quotes
+      name: portfolio
   runLatest:
     configuration:
       build:
@@ -29,40 +29,42 @@ spec:
           git:
             url: https://github.com/srinivasa-vasu/pivotal-bank-demo.git
             revision: pks_1.0
-          subPath: quotes-service
+          subPath: portfolio-service
         template:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/quotes-service
+            value: humourmind/portfolio-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
-              claimName: quotes-build-cache
+              claimName: portfolio-build-cache
       revisionTemplate:
         metadata:
-          name: quotes
+          name: portfolio
           annotations:
             # this prevents from scale to zero
             autoscaling.knative.dev/minScale: "1"
           labels:
-            app: quotes
+            app: portfolio
             knative.dev/type: app
         spec:
           metadata:
-            name: quotes
+            name: portfolio
             labels:
-              app: quotes
+              app: portfolio
               version: v1
           container:
-            image: humourmind/quotes-service
+            image: humourmind/portfolio-service
             env:
             - name: SPRING_CLOUD_CONFIG_LABEL
               value: pks_1.0
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://traderdb:3306/traderdb?useUnicode=true&characterEncoding=utf8&useSSL=false
 #            - name: SPRING_CLOUD_CONFIG_URI
 #              value: http://config-service
   traffic:
-    - tag: quotes
+    - tag: portfolio
       percent: 100
       latestRevision: true
 
