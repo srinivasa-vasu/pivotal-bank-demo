@@ -1,0 +1,1 @@
+'[{"op":"add","path":"/data","value":{ "${DOMAIN}": "selector:\n  app: web"}}]'

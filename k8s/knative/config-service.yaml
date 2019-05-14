@@ -34,7 +34,7 @@ spec:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/config-service
+            value: $REGISTRY/config-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
@@ -54,7 +54,7 @@ spec:
             labels:
               app: config
           container:
-            image: humourmind/config-service
+            image: $REGISTRY/config-service
   traffic:
     - tag: config
       percent: 100

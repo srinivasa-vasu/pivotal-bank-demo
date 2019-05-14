@@ -1,0 +1,15 @@
+resources:
+- deploy/trader-db.yaml 
+- deploy/registry-secret.yaml
+- deploy/sa.yaml
+- deploy/config-props.yaml
+- deploy/ds-props.yaml
+#- deploy/pod-preset-config.yaml
+#- deploy/pod-preset-db.yaml
+- deploy/config.yaml
+- deploy/accounts.yaml
+- deploy/gateway.yaml
+- deploy/portfolio.yaml
+- deploy/quotes.yaml
+- deploy/user.yaml
+- deploy/web.yaml

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ds-props
+data:
+  SPRING_DATASOURCE_URL: jdbc:mysql://traderdb:3306/traderdb?useUnicode=true&characterEncoding=utf8&useSSL=false
+  SPRING_DATASOURCE_USERNAME: root
+  

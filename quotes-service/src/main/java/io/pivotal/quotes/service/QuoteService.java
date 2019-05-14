@@ -34,6 +34,9 @@ public class QuoteService {
 	@Value("${pivotal.quotes.companies_url}")
 	protected String company_url;
 
+	@Value("${iex.cloud.api_token}")
+	private String apiToken;
+
 	public static final String FMT = "json";
 
 	/*
@@ -56,6 +59,7 @@ public class QuoteService {
 
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("symbol", symbol);
+		params.put("apiToken", apiToken);
 
 		IexQuote quote = restTemplate.getForObject(quote_url, IexQuote.class, params);
 
@@ -116,7 +120,11 @@ public class QuoteService {
 	public List<Quote> getQuotes(String symbols) {
 		log.debug("retrieving multiple quotes for: " + symbols);
 
-		IexBatchQuote batchQuotes = restTemplate.getForObject(quotes_url, IexBatchQuote.class, symbols);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("symbols", symbols);
+		params.put("apiToken", apiToken);
+
+		IexBatchQuote batchQuotes = restTemplate.getForObject(quotes_url, IexBatchQuote.class, params);
 
 		log.debug("Got response: " + batchQuotes);
 		final List<Quote> quotes = new ArrayList<>();
@@ -142,7 +150,14 @@ public class QuoteService {
 			throws SymbolNotFoundException {
 		log.debug("QuoteService.getCompanyInfoFallback: circuit opened for symbol: "
 				+ symbol);
-		List<CompanyInfo> companies = new ArrayList<>();
+		List companies = new ArrayList<CompanyInfo>(){
+			{
+				CompanyInfo info = new CompanyInfo();
+				info.setName(symbol);
+				info.setSymbol(symbol);
+				add(info);
+			}
+		};
 		return companies;
 	}
 }

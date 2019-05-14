@@ -1,7 +1,0 @@
-spring:
-  zipkin:
-    baseUrl: https://zipkin-server/
-    sender:
-      type: web
-pivotal:
-  downstream-protocol: http
