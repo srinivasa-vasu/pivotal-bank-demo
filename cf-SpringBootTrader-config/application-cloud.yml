@@ -1,6 +1,6 @@
 spring:
   zipkin:
-    baseUrl: https://zipkin-server/
+    baseUrl: http://zipkin-server/
     sender:
       type: web
 pivotal:
