@@ -15,6 +15,17 @@ spec:
     retries:
       attempts: 3
       perTryTimeout: 2s
+    match:
+    - sourceLabels:
+        app: web-service
+    - sourceLabels:
+        app: accounts-service
+    - sourceLabels:
+        app: portfolio-service
+    - sourceLabels:
+        app: quotes-service
+    - sourceLabels:
+        app: user-service
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
