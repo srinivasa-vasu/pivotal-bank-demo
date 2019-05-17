@@ -25,3 +25,4 @@ bin/
 *.settings
 secret.yaml
 secret.yml
+domain-patch.yaml

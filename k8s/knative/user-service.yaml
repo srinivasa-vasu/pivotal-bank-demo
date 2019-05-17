@@ -34,7 +34,7 @@ spec:
           name: jib-gradle
           arguments:
           - name: IMAGE
-            value: humourmind/user-service
+            value: $REGISTRY/user-service
         volumes:
           - name: persistent-cache
             persistentVolumeClaim:
@@ -55,7 +55,7 @@ spec:
               app: user
               version: v1
           container:
-            image: humourmind/user-service
+            image: $REGISTRY/user-service
             env:
             - name: SPRING_CLOUD_CONFIG_LABEL
               value: pks_1.0
