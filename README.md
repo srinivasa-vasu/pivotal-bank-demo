@@ -24,8 +24,8 @@ The workshops follow a series of exercises, or labs, and you can find links to t
 
 
 # Prerequisites
-* Preferably running [PKS](https://docs.pivotal.io/runtimes/pks/1-4/index.html) cluseter or any open K8s based distribution
-* git cli in your local machine to clone the repo 
+* Preferably running [PKS](https://docs.pivotal.io/runtimes/pks/1-4/index.html) cluster or any open K8s based distribution
+* git cli in your local machine to access and clone the repo 
  
 
 # Deployment
