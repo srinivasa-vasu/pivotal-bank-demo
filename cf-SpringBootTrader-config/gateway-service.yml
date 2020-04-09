@@ -6,43 +6,43 @@ spring:
           enabled: true
       routes:
       - id: quotes-service-curl
-        uri: lb://quotes-service
+        uri: http://quotes-service
         predicates:
         - Path=/quotes/**
         filters:
         - RewritePath=/quotes/(?<path>.*), /$\{path}
       - id: quotes-service
-        uri: lb://quotes-service
+        uri: http://quotes-service
         predicates:
         - Path=/v1/**
       - id: accounts-service
-        uri: lb://accounts-service
+        uri: http://accounts-service
         predicates:
         - Path=/accounts/**
         #filters:
         #- RewritePath=/accounts/(?<path>.*), /$\{path}
       - id: user-service
-        uri: lb://user-service
+        uri: http://user-service
         predicates:
         - Path=/users/**
         #filters:
         #- RewritePath=/user/(?<path>.*), /$\{path}
       - id: user-service-login
-        uri: lb://user-service
+        uri: http://user-service
         predicates:
         - Path=/login/**
       - id: user-service-logout
-        uri: lb://user-service
+        uri: http://user-service
         predicates:
         - Path=/logout/**
       - id: portfolio-service
-        uri: lb://portfolio-service
+        uri: http://portfolio-service
         predicates:
         - Path=/portfolio/**
         #filters:
         #- RewritePath=/portfolio/(?<path>.*), /$\{path}
       - id: analytics-service
-        uri: lb://analytics-service
+        uri: http://analytics-service
         predicates:
         - Path=/analytics/**
         #filters:
