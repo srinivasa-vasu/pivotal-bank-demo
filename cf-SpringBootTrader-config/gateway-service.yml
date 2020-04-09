@@ -1,9 +1,17 @@
 spring:
   cloud:
+    discovery:
+      enabled: true
+      blocking:
+        enabled: false  
     gateway:
+      enabled: true      
       discovery:
         locator:
           enabled: true
+      httpclient:
+      ssl:
+        use-insecure-trust-manager: true
       routes:
       - id: quotes-service-curl
         uri: http://quotes-service
