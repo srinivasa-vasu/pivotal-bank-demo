@@ -1,6 +1,11 @@
 spring:
   cloud:
+    discovery:
+      enabled: true
+      blocking:
+        enabled: false  
     gateway:
+      enabled: true      
       discovery:
         locator:
           enabled: true
