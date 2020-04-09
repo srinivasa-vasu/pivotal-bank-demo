@@ -1,6 +1,6 @@
 spring:
   zipkin:
-    baseUrl: http://zipkin-server/
+    baseUrl: http://wavefront-proxy.wavefront/
     sender:
       type: web
 pivotal:
