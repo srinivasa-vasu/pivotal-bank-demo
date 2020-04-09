@@ -1,7 +1,12 @@
 spring:
   cloud:
+    discovery:
+      enabled: true
+      blocking:
+        enabled: false  
     gateway:
       discovery:
+        enabled: true
         locator:
           enabled: true
       routes:
@@ -47,3 +52,9 @@ spring:
         - Path=/analytics/**
         #filters:
         #- RewritePath=/analytics/(?<path>.*), /$\{path}
+  sleuth:
+    enabled: true
+    sampler.probability: 1
+  zipkin:
+    enabled: true
+        
