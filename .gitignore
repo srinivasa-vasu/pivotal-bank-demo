@@ -31,3 +31,4 @@ secret.yml
 registry-secret.yaml
 registry-secret.yml
 domain-patch.yaml
+.vscode
