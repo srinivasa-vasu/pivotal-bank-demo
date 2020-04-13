@@ -40,7 +40,7 @@ git clone https://github.com/srinivasa-vasu/pivotal-bank-demo.git
 cd pivotal-bank-demo && git checkout observability_1.0
 ```
 
-* update <to_be_filled> fields in [config](https://github.com/srinivasa-vasu/pivotal-bank-demo/blob/observability_1.0/k8s/deploy/config-props.yaml) 
+* update <to_be_filled> fields in [config](https://github.com/srinivasa-vasu/pivotal-bank-demo/blob/observability_1.0/k8s/deploy/config-props.yaml). [Wavefront](https://github.com/srinivasa-vasu/pivotal-bank-demo/blob/observability_1.0/cf-SpringBootTrader-config/application-cloud.yaml) is configured to collect the app related metrics and trace info. It provides a collector that mimics Zipkin/Jaeger collector. Traces collected in Zipkin/Jaeger format can be forwarded to wavefront. Refer [K8s](https://docs.wavefront.com/kubernetes.html) integration for K8s cluster metrics.
 
 * update tag policy in [skaffold.yaml](https://github.com/srinivasa-vasu/pivotal-bank-demo/blob/observability_1.0/k8s/skaffold.yaml) to point to your repo and appropriately update the k8s manifests in [deploy](https://github.com/srinivasa-vasu/pivotal-bank-demo/tree/observability_1.0/k8s/deploy) folder as well
 
